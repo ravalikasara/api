@@ -37,7 +37,7 @@ const initializeDBAndServer = async () => {
 initializeDBAndServer();
 
 app.get('/',(req,res)=>{
-    res.json({message:"home2 data"})
+    res.json({message:"home3 data"})
 })
 
 app.get('/login',(req,res)=>{
