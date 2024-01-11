@@ -24,6 +24,7 @@ const initializeDBAndServer = async () => {
     db = await open({
       filename:dbPath,
       driver: sqlite3.Database,
+      mode: sqlite3.OPEN_READWRITE,
     });
   
      const port = process.env.PORT || 3001
