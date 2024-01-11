@@ -47,4 +47,21 @@ app.get('/login',(req,res)=>{
 app.get('/profile',(req,res)=>{
     res.json({message:"profile data"})
 })
+
+app.get("/items", async (request, response) => {
+  const {
+    sort_by = "id",
+    search_q = "",
+    order = "ASC",
+    category_id = "",
+  } = request.query;
+
+  let dbQuery = `SELECT * FROM Items WHERE name LIKE '%${search_q}%' ORDER BY ${sort_by} ${order}`;
+  if (category_id !== "") {
+    dbQuery = `SELECT * FROM Items WHERE category_id=${category_id} AND name LIKE '%${search_q}%' ORDER BY ${sort_by} ${order}`;
+  }
+  const data = await db.all(dbQuery);
+
+  response.json(data);
+});
   
