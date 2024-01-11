@@ -152,9 +152,10 @@ app.get('/remove-cart',async(req,res)=>{
   try {
     console.log(user_id, product_id);
     await db.run(`DELETE FROM Cart WHERE user_id = ${user_id} AND product_id = ${product_id}`);
-    res.send({message:"new"})
+    res.json({message:"new"})
   } catch (error) {
     console.error("Error executing the query:", error);
+    res.json({message:"error while removing cart item"})
   }
 })
 
@@ -175,9 +176,9 @@ app.get('/add-quantity', async (req, res) => {
     `;
 
     await db.run(updateQuery);
-    res.send({ message: "Quantity updated successfully" });
+    res.json({ message: "Quantity updated successfully" });
   } else {
-    res.status(404).send({ message: "Product not found in the cart" });
+    res.status(404).json({ message: "Product not found in the cart" });
   }
 });
 
@@ -202,9 +203,9 @@ app.get('/remove-quantity', async (req, res) => {
     `;
 
     await db.run(updateQuery);
-    res.send({ message: "Quantity updated successfully" });
+    res.json({ message: "Quantity updated successfully" });
   } else {
-    res.status(404).send({ message: "Product not found in the cart" });
+    res.status(404).json({ message: "Product not found in the cart" });
   }
 });
 
