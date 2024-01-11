@@ -10,11 +10,11 @@ app.use(cors())
 
 
 app.get('/',(req,res)=>{
-    res.json({message:"home1 data"})
+    res.json({message:"home2 data"})
 })
 
 app.get('/login',(req,res)=>{
-    res.json({message:"login data"})
+    res.json({message:"login2 data"})
 })
 
 app.get('/profile',(req,res)=>{
